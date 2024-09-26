@@ -70,7 +70,9 @@ app.post("/update/:edit_id",async(req,res)=>{
 
 })
 
-
+app.use((req,res)=>{
+    res.send('<h1>404</h1>')
+})
 
 
 app.listen(3000,()=>{
