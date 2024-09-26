@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESSEGE-BOARD</title>
+</head>
+<link rel="stylesheet" href="/style.css">
+
+  
+<body>
+    <h1>AWESOME MINI-BOARD</h1>
+
+  <div id="formdiv">
+
+  {{#if edit_id}}
+  
+     <form action="/update/{{edit_id}}" method="post" autocomplete="off">
+        <input type="text" name="username" value="{{edit_book.username}}">
+        <input type="text" name="message" value="{{edit_book.message}}">
+        <input type="submit" value="Edit" class="z">
+    </form>
+ 
+ {{else}}
+    <form action="/new" method="post" autocomplete="off">
+        <input type="text" name="username" placeholder="USER NAME" required >
+        <input type="text" name="message"placeholder="MESSEGE" required>
+        <input type="submit" value="CREATE" class="z">
+    </form>
+    
+    {{/if}}
+        </div>
+
+  
+
+    
+  <div id="main">
+        {{#each  books}}
+            <div class="second">
+            <div class="fle">
+             <b>{{this.username}}</b>
+             <div class="a">
+             <a href="/?edit_id={{this._id}}"><img src="/pencil-custom.png"></a>
+             <a href="/?delete_id={{this._id}}" onclick="return confirm('CONFIRM DELETE ?')"><img src="/delete-outline-custom.png"></a>
+             <li>{{this.day}}//{{this.times}}</li>
+             </div>
+            </div>
+            <div>
+             <p>{{this.message}}</p>
+             </div>
+             </div>
+          {{/each}}
+           </div>
+      
+   
+    
+</body>
+</html>
