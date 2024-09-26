@@ -9,7 +9,8 @@ const path=require('path')
 app.engine('hbs',exhbs.engine({layoutsDir:'views/',defaultLayout:'main',extname:'hbs'}));
 app.set('view engine','hbs');
 app.set('views','views')
-app.use(bodyparser.urlencoded())
+app.use(bodyparser.urlencoded({extended:true}))
+
 app.use(express.static(path.join(__dirname,'public')))
 
 
